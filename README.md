@@ -9,3 +9,13 @@ Front end of SociallyButterfly.com website
 JavaScript
 
 React.
+
+# how to run
+
+.env
+
+REACT_APP_BACKEND=<>
+
+npm ci
+
+npm run start

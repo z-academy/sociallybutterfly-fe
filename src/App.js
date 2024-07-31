@@ -192,7 +192,7 @@ export default function App() {
     // Make the API call using axios
     axios
       .post(
-        "https://8smyhjkiar.us-east-1.awsapprunner.com/api/generate_icebreaking_questions",
+        `${process.env.REACT_APP_BACKEND}/api/generate_icebreaking_questions`,
         payload
       )
       .then((response) => {
