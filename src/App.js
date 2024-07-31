@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import mitMediaLabLogo from "./assets/images/socially-butterfly-logo.jpg";
+import axios from "axios";
 
 const Title = styled.h1`
   font-size: 2em;
@@ -138,20 +139,60 @@ export default function App() {
   });
 
   const handleGenerate = () => {
-    setDisplayInfo({
-      profile1: `
-        Profile 1:
-        Name: ${profile1.name}
-        Offer: ${profile1.offer}
-        Looking For: ${profile1.lookingFor}
-      `,
-      profile2: `
-        Profile 2:
-        Name: ${profile2.name}
-        Offer: ${profile2.offer}
-        Looking For: ${profile2.lookingFor}
-      `,
-    });
+    const payload = {
+      profiles: [
+        {
+          name: profile1.name,
+          offer: profile1.offer,
+          lookingFor: profile1.lookingFor,
+        },
+        {
+          name: profile2.name,
+          offer: profile2.offer,
+          lookingFor: profile2.lookingFor,
+        },
+      ],
+    };
+
+    // Make the API call using axios
+    axios
+      .post(
+        "https://8smyhjkiar.us-east-1.awsapprunner.com/api/generate_icebreaking_questions",
+        payload
+      )
+      .then((response) => {
+        const data = JSON.parse(response.data.result);
+        const clean = (str) => str.replace(/^\s+|\s+$/g, "");
+
+        const formatQuestionsAndExplanations = (questions, explanations) => {
+          return questions
+            .map(
+              (q, index) =>
+                `Question: ${q.trim()}\nExplanation: ${explanations[
+                  index
+                ].trim()}`
+            )
+            .join("\n\n");
+        };
+
+        setDisplayInfo({
+          profile1: `Similarities: ${
+            data.similarities
+          }\n\n${formatQuestionsAndExplanations(
+            clean(data["iceBreakingQuestions (profile 1 to profile 2)"]),
+            clean(data["explanations (profile 1 to profile 2)"].trim())
+          )}`,
+          profile2: `Similarities: ${
+            data.similarities
+          }\n${formatQuestionsAndExplanations(
+            clean(data["iceBreakingQuestions (profile 2 to profile 1)"].trim()),
+            clean(data["explanations (profile 2 to profile 1)"].trim())
+          )}`,
+        });
+      })
+      .catch((error) => {
+        console.error("Error generating icebreaking questions:", error);
+      });
   };
 
   return (
