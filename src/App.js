@@ -56,6 +56,16 @@ const ProfileTitle = styled.h2`
   margin-bottom: 0.5em;
 `;
 
+const TextAreaName = styled.textarea`
+  width: 100%;
+  height: 15px;
+  margin: 10px 0;
+  padding: 10px;
+  font-size: 1em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+`;
+
 const TextArea = styled.textarea`
   width: 100%;
   height: 100px;
@@ -65,16 +75,6 @@ const TextArea = styled.textarea`
   border: 1px solid #ccc;
   border-radius: 4px;
   resize: vertical;
-`;
-
-const NameInput = styled.input`
-  width: 100%;
-  height: 40px;
-  margin: 10px 0;
-  padding: 10px;
-  font-size: 1em;
-  border: 1px solid #ccc;
-  border-radius: 4px;
 `;
 
 const Button = styled.button`
@@ -143,7 +143,7 @@ export default function App() {
       <ProfilesContainer>
         <ProfileContainer>
           <ProfileTitle>Profile 1</ProfileTitle>
-          <NameInput
+          <TextAreaName
             placeholder="Name"
             value={profile1.name}
             onChange={(e) => setProfile1({ ...profile1, name: e.target.value })}
@@ -165,7 +165,7 @@ export default function App() {
         </ProfileContainer>
         <ProfileContainer>
           <ProfileTitle>Profile 2</ProfileTitle>
-          <NameInput
+          <TextAreaName
             placeholder="Name"
             value={profile2.name}
             onChange={(e) => setProfile2({ ...profile2, name: e.target.value })}
