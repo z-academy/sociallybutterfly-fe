@@ -32,6 +32,7 @@ const ProfilesContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  align-items: flex-start;
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -92,18 +93,32 @@ const Button = styled.button`
   }
 `;
 
-const DisplayArea = styled.div`
-  width: 80%;
-  max-width: 600px;
+const DisplayContainer = styled.div`
+  width: 45%;
   padding: 20px;
-  margin-top: 20px;
-  margin-bottom: 40px;
+  margin: auto 0;
+  background-color: #f9f9f9;
   border: 1px solid #ccc;
   border-radius: 4px;
-  background-color: #f9f9f9;
   font-size: 1em;
   line-height: 1.5em;
   white-space: pre-wrap;
+
+  @media (max-width: 768px) {
+    width: 80%;
+  }
+`;
+
+const RowContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 export default function App() {
@@ -117,20 +132,26 @@ export default function App() {
     offer: "",
     lookingFor: "",
   });
-  const [displayInfo, setDisplayInfo] = useState("");
+  const [displayInfo, setDisplayInfo] = useState({
+    profile1: "",
+    profile2: "",
+  });
 
   const handleGenerate = () => {
-    setDisplayInfo(`
-      Profile 1:
-      Name: ${profile1.name}
-      Offer: ${profile1.offer}
-      Looking For: ${profile1.lookingFor}
-
-      Profile 2:
-      Name: ${profile2.name}
-      Offer: ${profile2.offer}
-      Looking For: ${profile2.lookingFor}
-    `);
+    setDisplayInfo({
+      profile1: `
+        Profile 1:
+        Name: ${profile1.name}
+        Offer: ${profile1.offer}
+        Looking For: ${profile1.lookingFor}
+      `,
+      profile2: `
+        Profile 2:
+        Name: ${profile2.name}
+        Offer: ${profile2.offer}
+        Looking For: ${profile2.lookingFor}
+      `,
+    });
   };
 
   return (
@@ -140,54 +161,69 @@ export default function App() {
       <SubTitle>
         <i>Effortless and engaging in-person networking.</i>
       </SubTitle>
-      <ProfilesContainer>
-        <ProfileContainer>
-          <ProfileTitle>Profile 1</ProfileTitle>
-          <TextAreaName
-            placeholder="Name"
-            value={profile1.name}
-            onChange={(e) => setProfile1({ ...profile1, name: e.target.value })}
-          />
-          <TextArea
-            placeholder="What can you offer?"
-            value={profile1.offer}
-            onChange={(e) =>
-              setProfile1({ ...profile1, offer: e.target.value })
-            }
-          />
-          <TextArea
-            placeholder="What are you looking for?"
-            value={profile1.lookingFor}
-            onChange={(e) =>
-              setProfile1({ ...profile1, lookingFor: e.target.value })
-            }
-          />
-        </ProfileContainer>
-        <ProfileContainer>
-          <ProfileTitle>Profile 2</ProfileTitle>
-          <TextAreaName
-            placeholder="Name"
-            value={profile2.name}
-            onChange={(e) => setProfile2({ ...profile2, name: e.target.value })}
-          />
-          <TextArea
-            placeholder="What can you offer?"
-            value={profile2.offer}
-            onChange={(e) =>
-              setProfile2({ ...profile2, offer: e.target.value })
-            }
-          />
-          <TextArea
-            placeholder="What are you looking for?"
-            value={profile2.lookingFor}
-            onChange={(e) =>
-              setProfile2({ ...profile2, lookingFor: e.target.value })
-            }
-          />
-        </ProfileContainer>
-      </ProfilesContainer>
-      <Button onClick={handleGenerate}>Generate</Button>
-      {displayInfo && <DisplayArea>{displayInfo}</DisplayArea>}
+      <RowContainer>
+        <ProfilesContainer>
+          <ProfileContainer>
+            <ProfileTitle>Profile 1</ProfileTitle>
+            <TextAreaName
+              placeholder="Name"
+              value={profile1.name}
+              onChange={(e) =>
+                setProfile1({ ...profile1, name: e.target.value })
+              }
+            />
+            <TextArea
+              placeholder="What can you offer?"
+              value={profile1.offer}
+              onChange={(e) =>
+                setProfile1({ ...profile1, offer: e.target.value })
+              }
+            />
+            <TextArea
+              placeholder="What are you looking for?"
+              value={profile1.lookingFor}
+              onChange={(e) =>
+                setProfile1({ ...profile1, lookingFor: e.target.value })
+              }
+            />
+          </ProfileContainer>
+          {displayInfo.profile1 && (
+            <DisplayContainer>{displayInfo.profile1}</DisplayContainer>
+          )}
+        </ProfilesContainer>
+      </RowContainer>
+      <Button onClick={handleGenerate}>Break the ice!</Button>
+      <RowContainer>
+        <ProfilesContainer>
+          <ProfileContainer>
+            <ProfileTitle>Profile 2</ProfileTitle>
+            <TextAreaName
+              placeholder="Name"
+              value={profile2.name}
+              onChange={(e) =>
+                setProfile2({ ...profile2, name: e.target.value })
+              }
+            />
+            <TextArea
+              placeholder="What can you offer?"
+              value={profile2.offer}
+              onChange={(e) =>
+                setProfile2({ ...profile2, offer: e.target.value })
+              }
+            />
+            <TextArea
+              placeholder="What are you looking for?"
+              value={profile2.lookingFor}
+              onChange={(e) =>
+                setProfile2({ ...profile2, lookingFor: e.target.value })
+              }
+            />
+          </ProfileContainer>
+          {displayInfo.profile2 && (
+            <DisplayContainer>{displayInfo.profile2}</DisplayContainer>
+          )}
+        </ProfilesContainer>
+      </RowContainer>
     </Container>
   );
 }
