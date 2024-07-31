@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import mitMediaLabLogo from "./assets/images/socially-butterfly-logo.jpg";
 import axios from "axios";
 
@@ -66,6 +66,9 @@ const TextAreaName = styled.textarea`
   font-size: 1em;
   border: 1px solid #ccc;
   border-radius: 4px;
+  resize: none;
+  pointer-events: ${({ disabled }) => (disabled ? "none" : "auto")};
+  opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
 `;
 
 const TextArea = styled.textarea`
@@ -77,6 +80,8 @@ const TextArea = styled.textarea`
   border: 1px solid #ccc;
   border-radius: 4px;
   resize: vertical;
+  pointer-events: ${({ disabled }) => (disabled ? "none" : "auto")};
+  opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
 `;
 
 const Button = styled.button`
@@ -88,6 +93,8 @@ const Button = styled.button`
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  pointer-events: ${({ disabled }) => (disabled ? "none" : "auto")};
+  opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
 
   &:hover {
     background-color: #0056b3;
@@ -122,6 +129,29 @@ const RowContainer = styled.div`
   }
 `;
 
+const QuestionExplanationContainer = styled.div`
+  margin: 20px 0;
+`;
+
+const spin = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+`;
+
+const Spinner = styled.div`
+  margin: 20px 0;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: ${spin} 2s linear infinite;
+`;
+
 export default function App() {
   const [profile1, setProfile1] = useState({
     name: "",
@@ -134,11 +164,16 @@ export default function App() {
     lookingFor: "",
   });
   const [displayInfo, setDisplayInfo] = useState({
-    profile1: "",
-    profile2: "",
+    similarities: "",
+    iceBreakingQuestions1: [],
+    explanations1: [],
+    iceBreakingQuestions2: [],
+    explanations2: [],
   });
+  const [loading, setLoading] = useState(false);
 
   const handleGenerate = () => {
+    setLoading(true);
     const payload = {
       profiles: [
         {
@@ -162,36 +197,22 @@ export default function App() {
       )
       .then((response) => {
         const data = JSON.parse(response.data.result);
-        const clean = (str) => str.replace(/^\s+|\s+$/g, "");
-
-        const formatQuestionsAndExplanations = (questions, explanations) => {
-          return questions
-            .map(
-              (q, index) =>
-                `Question: ${q.trim()}\nExplanation: ${explanations[
-                  index
-                ].trim()}`
-            )
-            .join("\n\n");
-        };
 
         setDisplayInfo({
-          profile1: `Similarities: ${
-            data.similarities
-          }\n\n${formatQuestionsAndExplanations(
-            clean(data["iceBreakingQuestions (profile 1 to profile 2)"]),
-            clean(data["explanations (profile 1 to profile 2)"].trim())
-          )}`,
-          profile2: `Similarities: ${
-            data.similarities
-          }\n${formatQuestionsAndExplanations(
-            clean(data["iceBreakingQuestions (profile 2 to profile 1)"].trim()),
-            clean(data["explanations (profile 2 to profile 1)"].trim())
-          )}`,
+          similarities: data?.similarities,
+          iceBreakingQuestions1:
+            data["iceBreakingQuestions (profile 1 to profile 2)"],
+          explanations1: data["explanations (profile 1 to profile 2)"],
+          iceBreakingQuestions2:
+            data["iceBreakingQuestions (profile 2 to profile 1)"],
+          explanations2: data["explanations (profile 2 to profile 1)"],
         });
       })
       .catch((error) => {
         console.error("Error generating icebreaking questions:", error);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
 
@@ -212,6 +233,7 @@ export default function App() {
               onChange={(e) =>
                 setProfile1({ ...profile1, name: e.target.value })
               }
+              disabled={loading}
             />
             <TextArea
               placeholder="What can you offer?"
@@ -219,6 +241,7 @@ export default function App() {
               onChange={(e) =>
                 setProfile1({ ...profile1, offer: e.target.value })
               }
+              disabled={loading}
             />
             <TextArea
               placeholder="What are you looking for?"
@@ -226,14 +249,37 @@ export default function App() {
               onChange={(e) =>
                 setProfile1({ ...profile1, lookingFor: e.target.value })
               }
+              disabled={loading}
             />
           </ProfileContainer>
-          {displayInfo.profile1 && (
-            <DisplayContainer>{displayInfo.profile1}</DisplayContainer>
+          {displayInfo.similarities && (
+            <DisplayContainer>
+              <div>
+                <b>Similarities:</b> {displayInfo.similarities}
+              </div>
+
+              {displayInfo.iceBreakingQuestions1.map((each, idx) => (
+                <QuestionExplanationContainer key={idx}>
+                  <div>
+                    <b>Question:</b> {each}
+                  </div>
+                  <div>
+                    <b>Explanation:</b> {displayInfo.explanations1[idx]}
+                  </div>
+                </QuestionExplanationContainer>
+              ))}
+            </DisplayContainer>
           )}
         </ProfilesContainer>
       </RowContainer>
-      <Button onClick={handleGenerate}>Break the ice!</Button>
+
+      {loading ? (
+        <Spinner />
+      ) : (
+        <Button onClick={handleGenerate} disabled={loading}>
+          Break the ice!
+        </Button>
+      )}
       <RowContainer>
         <ProfilesContainer>
           <ProfileContainer>
@@ -244,6 +290,7 @@ export default function App() {
               onChange={(e) =>
                 setProfile2({ ...profile2, name: e.target.value })
               }
+              disabled={loading}
             />
             <TextArea
               placeholder="What can you offer?"
@@ -251,6 +298,7 @@ export default function App() {
               onChange={(e) =>
                 setProfile2({ ...profile2, offer: e.target.value })
               }
+              disabled={loading}
             />
             <TextArea
               placeholder="What are you looking for?"
@@ -258,10 +306,26 @@ export default function App() {
               onChange={(e) =>
                 setProfile2({ ...profile2, lookingFor: e.target.value })
               }
+              disabled={loading}
             />
           </ProfileContainer>
-          {displayInfo.profile2 && (
-            <DisplayContainer>{displayInfo.profile2}</DisplayContainer>
+          {displayInfo.similarities && (
+            <DisplayContainer>
+              <div>
+                <b>Similarities:</b> {displayInfo.similarities}
+              </div>
+
+              {displayInfo.iceBreakingQuestions2.map((each, idx) => (
+                <QuestionExplanationContainer key={idx}>
+                  <div>
+                    <b>Question:</b> {each}
+                  </div>
+                  <div>
+                    <b>Explanation:</b> {displayInfo.explanations2[idx]}
+                  </div>
+                </QuestionExplanationContainer>
+              ))}
+            </DisplayContainer>
           )}
         </ProfilesContainer>
       </RowContainer>
