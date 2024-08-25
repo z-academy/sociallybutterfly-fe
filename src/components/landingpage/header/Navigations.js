@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
 import Button from '@mui/material/Button';
-import { styled } from '@mui/material/styles';
+import { useNavigate } from 'react-router-dom';
 
 const Navigations = () => {
+
+	const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate('/app');
+  };
 
 
 	// demos
@@ -32,7 +38,7 @@ const Navigations = () => {
 
 	return (
 		<>
-			<Button color="primary" variant="outlined" size='medium' href="/auth/login">
+			<Button color="primary" variant="outlined" size='medium' onClick={handleClick}>
 				Try now for free
 			</Button>
 		</>

@@ -3,9 +3,9 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import useMediaQuery from "@mui/material/useMediaQuery";
 import { styled } from "@mui/material/styles";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 const StyledButton = styled(Button)({
   padding: "13px 48px",
@@ -13,7 +13,11 @@ const StyledButton = styled(Button)({
 });
 
 const BannerContent = () => {
-  const lgDown = useMediaQuery("(max-width: 1280px)");
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate('/app');
+  };
 
   return (
     <Box mt={8} alignItems={"center"}>
@@ -103,7 +107,7 @@ const BannerContent = () => {
           <StyledButton
             variant="contained"
             color="primary"
-            href="/auth/register"
+            onClick={handleClick}
             size="medium"
           >
             Try now for free
