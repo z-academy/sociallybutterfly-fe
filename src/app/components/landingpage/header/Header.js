@@ -8,7 +8,7 @@ import Stack from '@mui/material/Stack';
 import Toolbar from '@mui/material/Toolbar';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { styled } from '@mui/material/styles';
-import Logo from "components/layout/Logo";
+import Logo from "app/components/layout/Logo";
 import { Icon } from '@iconify/react';
 
 import Navigations from "./Navigations";

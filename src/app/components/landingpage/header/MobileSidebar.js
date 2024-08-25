@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Logo from 'components/layout/Logo';
+import Logo from "app/components/layout/Logo";
 import Stack from '@mui/material/Stack';
 import { useNavigate } from 'react-router-dom';
 

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styled, { keyframes } from "styled-components";
-import mitMediaLabLogo from "./assets/images/socially-butterfly-logo.jpg";
 import axios from "axios";
 
 const Title = styled.h1`
@@ -152,7 +151,7 @@ const Spinner = styled.div`
   animation: ${spin} 2s linear infinite;
 `;
 
-export default function AppPage() {
+export default function AppPage1() {
   const [profile1, setProfile1] = useState({
     name: "",
     offer: "",
@@ -218,7 +217,7 @@ export default function AppPage() {
 
   return (
     <Container>
-      <Logo src={mitMediaLabLogo} alt="Socially Butterfly Logo" />
+      {/* <Logo src={mitMediaLabLogo} alt="Socially Butterfly Logo" /> */}
       <Title>SociallyButterfly: PoC</Title>
       <SubTitle>
         <i>Effortless and engaging in-person networking.</i>

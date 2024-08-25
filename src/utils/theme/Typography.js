@@ -1,5 +1,5 @@
 const Typography = {
-  fontFamily: "Arial, Helvetica, sans-serif",
+  fontFamily: "Inter, Arial, Helvetica, sans-serif",
   h1: {
     fontWeight: 600,
     fontSize: '2.25rem',
