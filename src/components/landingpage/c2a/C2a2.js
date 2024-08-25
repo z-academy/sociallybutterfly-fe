@@ -47,9 +47,9 @@ const C2a2 = () => {
                 <StyledButton2
                   variant="outlined"
                   color="inherit"
-                  href="/auth/register"
+                  href='mailto:contact@chenyuzhang.com'
                 >
-                  Sign up for free
+                  contact us
                 </StyledButton2>
               </Stack>
             </Grid>
