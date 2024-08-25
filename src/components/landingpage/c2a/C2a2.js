@@ -32,7 +32,7 @@ const C2a2 = () => {
           <Grid container justifyContent="space-between" spacing={3}>
             <Grid item xs={12} sm={12} lg={5}>
               <Typography
-                variant="h2"
+                variant="h4"
                 sx={{
                   color: "#fff",
                   fontWeight: 500,

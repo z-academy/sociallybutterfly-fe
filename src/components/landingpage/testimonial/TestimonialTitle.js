@@ -60,8 +60,8 @@ const TestimonialTitle = () => {
         >
           {features.map((feature, index) => (
             <Stack key={index} direction="column" alignItems="center" spacing={4}>
-              <Icon icon={feature.icon} width={68} color="#008080" />
-              <Typography variant="h3" color="primary" fontWeight={700}>
+              <Icon icon={feature.icon} width={68} color="secondary.main" />
+              <Typography variant="h2" color="primary" fontWeight={700}>
                 {feature.title}
               </Typography>
               <Typography variant="h6" color="textSecondary" fontWeight={500} textAlign="center">

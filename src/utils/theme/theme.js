@@ -1,6 +1,6 @@
 import { createTheme } from "@mui/material/styles";
 import { red } from "@mui/material/colors";
-import Typography, { plus } from "./Typography"; // Import typography
+import Typography, { plus } from "./Typography";
 
 const theme = createTheme({
   palette: {
@@ -8,13 +8,13 @@ const theme = createTheme({
       main: "#008080",
     },
     secondary: {
-      main: "#FFD700",
+      main: "#4A4A4A",
     },
     error: {
       main: red.A400,
     },
   },
-  typography: Typography, // Add typography to the theme
+  typography: Typography,
 });
 
 export default theme;

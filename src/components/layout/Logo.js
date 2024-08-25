@@ -23,7 +23,7 @@ const Logo = () => {
         }}
       >
         <img
-          src="/images/logo.png"
+          src="/images/logo.svg"
           alt="logo"
           style={{ width: "180px", height: "auto" }}
         />
