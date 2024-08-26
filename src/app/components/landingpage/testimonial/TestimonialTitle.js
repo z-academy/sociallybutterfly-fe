@@ -3,6 +3,7 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import { Icon } from "@iconify/react";
+import { useTheme } from "@mui/material/styles";
 
 const features = [
   {
@@ -14,15 +15,12 @@ const features = [
     icon: "fluent:handshake-16-filled",
     title: "Matching",
     description: "Utilize an intelligent matching algorithm to connect individuals based on shared interests, goals, and other relevant criteria."
-  },
-  {
-    icon: "gridicons:chat",
-    title: "Voice vs. Chat",
-    description: "Evaluate the effectiveness of voice interactions versus chat-based communication to determine which format enhances the networking experience."
   }
 ];
 
 const TestimonialTitle = () => {
+  const theme = useTheme();
+
   return (
     <Grid container spacing={3} justifyContent="center" pb={3}>
       <Grid item xs={12}>
@@ -60,11 +58,11 @@ const TestimonialTitle = () => {
         >
           {features.map((feature, index) => (
             <Stack key={index} direction="column" alignItems="center" spacing={4}>
-              <Icon icon={feature.icon} width={68} color="secondary.main" />
-              <Typography variant="h2" color="primary" fontWeight={700}>
+              <Icon icon={feature.icon} width={68} color={theme.palette.primary.main} />
+              <Typography variant="h4" color={theme.palette.secondary.main} fontWeight={700}>
                 {feature.title}
               </Typography>
-              <Typography variant="h6" color="textSecondary" fontWeight={500} textAlign="center">
+              <Typography variant="body1" color={theme.palette.text.secondary} fontWeight={500} textAlign="center">
                 {feature.description}
               </Typography>
             </Stack>

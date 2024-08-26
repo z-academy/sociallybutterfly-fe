@@ -5,13 +5,13 @@ import Typography, { plus } from "./Typography";
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#008080",
+      main: "#EF5A3C",
     },
     secondary: {
-      main: "#4A4A4A",
+      main: "#292929",
     },
     error: {
-      main: red.A400,
+      main: '#D96F6F',
     },
     text: {
       secondary: "#656565",

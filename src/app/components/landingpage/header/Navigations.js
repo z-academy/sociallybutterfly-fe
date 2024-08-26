@@ -38,7 +38,7 @@ const Navigations = () => {
 
 	return (
 		<>
-			<Button color="primary" variant="outlined" size='medium' onClick={handleClick}>
+			<Button color="secondary" variant="outlined" size='medium' onClick={handleClick}>
 				Try now for free
 			</Button>
 		</>

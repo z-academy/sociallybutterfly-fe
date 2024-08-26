@@ -17,7 +17,7 @@ import MobileSidebar from "./MobileSidebar";
 const LpHeader = () => {
   const AppBarStyled = styled(AppBar)({
     justifyContent: "center",
-    minHeight: "65px",
+    minHeight: "80px",
     backgroundColor: "#fff", 
     boxShadow: "none",
     backgroundColor: 'rgba(255, 255, 255, 0.8)', 

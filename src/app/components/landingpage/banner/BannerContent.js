@@ -106,7 +106,7 @@ const BannerContent = () => {
         >
           <StyledButton
             variant="contained"
-            color="primary"
+            color="secondary"
             onClick={handleClick}
             size="medium"
           >

@@ -7,30 +7,30 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { styled } from "@mui/material/styles";
 
-const StyledButton2 = styled(Button)({
+const StyledButton2 = styled(Button)(({ theme }) => ({
   padding: "13px 34px",
   fontSize: "16px",
   borderColor: "#fff",
   color: "#fff",
   "&:hover": {
     backgroundColor: "#fff",
-    color: "#008080", 
+    color: theme.palette.primary.main, 
   },
-});
+}));
 
 const C2a2 = () => {
   return (
     <Box>
       <Box
         sx={{
-          backgroundColor: "primary.main", 
+          backgroundColor: "secondary.main", 
           pt: "30px",
           pb: "30px",
         }}
       >
         <Container maxWidth="lg">
           <Grid container justifyContent="space-between" spacing={3}>
-            <Grid item xs={12} sm={12} lg={5}>
+            <Grid item xs={12} sm={12} lg={8}>
               <Typography
                 variant="h4"
                 sx={{
