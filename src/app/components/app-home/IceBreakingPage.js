@@ -1,25 +1,40 @@
 import React from "react";
-import { Box, Typography, Button, List, ListItem, Container } from "@mui/material";
+import {
+  Box,
+  Typography,
+  Button,
+  List,
+  ListItem,
+  Container,
+} from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useMediaQuery } from "@mui/material";
 import Logo from "app/components/layout/Logo";
 
 const IcebreakingPage = () => {
   const navigate = useNavigate();
-  const isMobile = useMediaQuery("(max-width:600px)");
-
-  const handleCloseClick = () => {
-    navigate("/app");
-  };
 
   const handleNewPartnerClick = () => {
     navigate("/match");
   };
 
   const questions = [
-    "How do you balance creativity and productivity?",
-    "What’s your go-to method for user testing?",
-    "What’s a UX trend you’re excited to see evolve?",
+    {
+      question: "How did you come up with your username?",
+      explanation:
+        "Both profiles have similar usernames, which can be a fun topic to discuss.",
+    },
+    {
+      question: "What kind of offers are you most interested in?",
+      explanation:
+        "Both profiles mention 'offer', so discussing their interests in offers can be engaging.",
+    },
+    {
+      question:
+        "What are you currently looking for in your professional journey?",
+      explanation:
+        "Both profiles are looking for something, so discussing their current professional goals can be insightful.",
+    },
   ];
 
   return (
@@ -57,16 +72,28 @@ const IcebreakingPage = () => {
               and show genuine interest in each other's expertise.
             </Typography>
           </Typography>
-          {/* Icebreaker Questions */}
           <List sx={{ mt: 3 }}>
-            {questions.map((question, index) => (
+            {questions.map((item, index) => (
               <ListItem
                 key={index}
-                sx={{ p: 4, mb: 2, bgcolor: "#f5f5f5", borderRadius: 2 }}
+                sx={{
+                  p: 2,
+                  mb: 2,
+                  bgcolor: "#f5f5f5",
+                  borderRadius: 2,
+                  display: "flex",
+                  flexDirection: "column",
+                  textAlign: "left",
+                  alignItems: "flex-start",
+                }}
               >
-                <Typography sx={{ fontSize: 18, fontWeight: 400 }}>
-                  {" "}
-                  {question}
+                <Typography sx={{ fontSize: 18, fontWeight: 400, mb: 1 }}>
+                  {item.question}
+                </Typography>
+                <Typography
+                  sx={{ fontSize: 14, fontWeight: 300, color: "#969696" }}
+                >
+                  {item.explanation}
                 </Typography>
               </ListItem>
             ))}
