@@ -1,10 +1,22 @@
-import { Box, Typography, Button, IconButton, InputAdornment, TextField } from "@mui/material";
+import {
+  Box,
+  Typography,
+  Button,
+  IconButton,
+  InputAdornment,
+  TextField,
+} from "@mui/material";
 import { useState } from "react";
 import { Stack } from "@mui/system";
-import { supabase } from 'utils/supabase';
+import { supabase } from "utils/supabase";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import { SUBDOMAIN_REGEX, EMAIL_REGEX, PASSWORD_MIN_LENGTH } from "utils/constants";
+import {
+  SUBDOMAIN_REGEX,
+  EMAIL_REGEX,
+  PASSWORD_MIN_LENGTH,
+  WEB_APP_NAME,
+} from "utils/constants";
 import { ERROR_MESSAGES, ERROR_CODES, AUTH_MESSAGE } from "utils/errorCodes";
 
 const AuthRegister = ({ title, subtitle, subtext }) => {
@@ -68,6 +80,7 @@ const AuthRegister = ({ title, subtitle, subtext }) => {
       options: {
         data: {
           display_name: name,
+          platform: WEB_APP_NAME,
         },
         emailRedirectTo: `${window.location.origin}/auth/login`,
       },
@@ -84,9 +97,10 @@ const AuthRegister = ({ title, subtitle, subtext }) => {
         setGeneralError(error.message);
       }
     } else {
-      const message = data?.user?.role === "authenticated"
-        ? AUTH_MESSAGE.CONFIRM_EMAIL
-        : AUTH_MESSAGE.ALREADY_REGISTERED;
+      const message =
+        data?.user?.role === "authenticated"
+          ? AUTH_MESSAGE.CONFIRM_EMAIL
+          : AUTH_MESSAGE.ALREADY_REGISTERED;
       setConfirmationMessage(message);
     }
   };
@@ -107,7 +121,9 @@ const AuthRegister = ({ title, subtitle, subtext }) => {
 
       <Box component="form" onSubmit={handleSignUp} height={450} width="auto">
         <Stack mb={3}>
-          <Typography variant="body1" component="label" htmlFor="name" mb={1}>Name</Typography>
+          <Typography variant="body1" component="label" htmlFor="name" mb={1}>
+            Name
+          </Typography>
           <TextField
             id="name"
             variant="outlined"
@@ -117,7 +133,15 @@ const AuthRegister = ({ title, subtitle, subtext }) => {
             error={Boolean(nameError)}
             helperText={nameError}
           />
-          <Typography variant="body1" component="label" htmlFor="email" mb={1} mt={2}>Email Address</Typography>
+          <Typography
+            variant="body1"
+            component="label"
+            htmlFor="email"
+            mb={1}
+            mt={2}
+          >
+            Email Address
+          </Typography>
           <TextField
             id="email"
             variant="outlined"
@@ -127,7 +151,15 @@ const AuthRegister = ({ title, subtitle, subtext }) => {
             error={Boolean(emailError)}
             helperText={emailError}
           />
-          <Typography variant="body1" component="label" htmlFor="password" mb={1} mt={2}>Password</Typography>
+          <Typography
+            variant="body1"
+            component="label"
+            htmlFor="password"
+            mb={1}
+            mt={2}
+          >
+            Password
+          </Typography>
           <TextField
             id="password"
             variant="outlined"
@@ -145,7 +177,11 @@ const AuthRegister = ({ title, subtitle, subtext }) => {
                     onClick={handleClickShowPassword}
                     edge="end"
                   >
-                    {showPassword ? <Visibility sx={{ fontSize: 20 }} /> : <VisibilityOff sx={{ fontSize: 20 }} />}
+                    {showPassword ? (
+                      <Visibility sx={{ fontSize: 20 }} />
+                    ) : (
+                      <VisibilityOff sx={{ fontSize: 20 }} />
+                    )}
                   </IconButton>
                 </InputAdornment>
               ),
