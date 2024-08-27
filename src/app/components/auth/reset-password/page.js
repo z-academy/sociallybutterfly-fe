@@ -10,7 +10,7 @@ export default function ResetPassword() {
           <Logo />
         </Box>
       </Box>
-      <Box p={4} width={300}>
+      <Box p={4}>
         <Typography variant="h4" fontWeight="700">
           Reset your password
         </Typography>

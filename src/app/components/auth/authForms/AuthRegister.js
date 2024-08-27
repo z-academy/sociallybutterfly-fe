@@ -105,7 +105,7 @@ const AuthRegister = ({ title, subtitle, subtext }) => {
 
       {subtext}
 
-      <Box component="form" onSubmit={handleSignUp} height={450} width={300}>
+      <Box component="form" onSubmit={handleSignUp} height={450} width="auto">
         <Stack mb={3}>
           <Typography variant="body1" component="label" htmlFor="name" mb={1}>Name</Typography>
           <TextField
