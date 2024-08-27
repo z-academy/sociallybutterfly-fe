@@ -4,15 +4,25 @@ import Button from '@mui/material/Button';
 import Logo from "app/components/layout/Logo";
 import Stack from '@mui/material/Stack';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from 'context/AuthContext';
 
 const MobileSidebar = () => {
-	const [toggle, setToggle] = useState(false)
-	const [toggle2, setToggle2] = useState(false)
+	const { logout } = useAuth();
 
 	const navigate = useNavigate();
 
-  const handleClick = () => {
+  const handleLoginClick = () => {
     navigate('/app');
+  };
+
+
+  const handleLogoutClick = async () => {
+    try {
+      await logout();
+      navigate('/auth/login'); // Redirect to login page after logout
+    } catch (error) {
+      console.error('Error logging out:', error.message);
+    }
   };
 
 	return (
@@ -22,8 +32,11 @@ const MobileSidebar = () => {
 			</Box>
 			<Box p={3}>
 
+				<Stack direction="column" spacing={2} mb={2} >
+					<Button color="secondary" variant="contained" onClick={handleLoginClick}>Sign in</Button>
+				</Stack>
 				<Stack direction="column" spacing={2} >
-					<Button color="primary" variant="contained" onClick={handleClick}>Sign in</Button>
+					<Button color="secondary" variant="contained" onClick={handleLogoutClick}>Logout</Button>
 				</Stack>
 			</Box>
 		</>
