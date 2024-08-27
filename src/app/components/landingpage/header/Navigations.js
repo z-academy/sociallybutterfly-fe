@@ -39,7 +39,7 @@ const Navigations = () => {
 	return (
 		<>
 			<Button color="secondary" variant="outlined" size='medium' onClick={handleClick}>
-				Try now for free
+				Sign In
 			</Button>
 		</>
 	);
