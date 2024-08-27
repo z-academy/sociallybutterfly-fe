@@ -23,7 +23,7 @@ const MobileSidebar = () => {
 			<Box p={3}>
 
 				<Stack direction="column" spacing={2} >
-					<Button color="primary" variant="contained" onClick={handleClick}>Try now for free</Button>
+					<Button color="primary" variant="contained" onClick={handleClick}>Sign in</Button>
 				</Stack>
 			</Box>
 		</>

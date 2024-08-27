@@ -16,7 +16,7 @@ const BannerContent = () => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate('/auth/login');
+    navigate('/app');
   };
 
   return (
