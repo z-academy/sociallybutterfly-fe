@@ -8,7 +8,6 @@ import {
   Container,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { useMediaQuery } from "@mui/material";
 import Logo from "app/components/layout/Logo";
 
 const IcebreakingPage = () => {

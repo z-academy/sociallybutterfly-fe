@@ -1,20 +1,17 @@
-import { useState } from 'react';
-import { Button, Stack, Alert, Typography } from "@mui/material";
-import Link from "next/link";
-import CustomTextField from "@/app/components/forms/theme-elements/CustomTextField";
-import CustomFormLabel from "@/app/components/forms/theme-elements/CustomFormLabel";
-import { supabase } from '@/utils/supabase'; 
-import { ERROR_MESSAGES } from '@/utils/errorCodes';
+import { useState } from "react";
+import { Button, Stack, Alert, Typography, TextField } from "@mui/material";
+import { supabase } from "utils/supabase";
+import { ERROR_MESSAGES } from "utils/errorCodes";
 
 export default function AuthForgotPassword() {
-  const [email, setEmail] = useState('');
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
+  const [email, setEmail] = useState("");
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
-  const handleForgotPassword = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
+  const handleForgotPassword = async (e) => {
     e.preventDefault();
-    setError('');
-    setSuccess('');
+    setError("");
+    setSuccess("");
 
     const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
       redirectTo: `${window.location.origin}/auth/reset-password`,
@@ -29,14 +26,19 @@ export default function AuthForgotPassword() {
 
   return (
     <>
-      <Stack mt={4} spacing={2} component="form" onSubmit={handleForgotPassword}>
-        <CustomFormLabel htmlFor="reset-email">Email Address</CustomFormLabel>
-        <CustomTextField
+      <Stack
+        mt={4}
+        spacing={2}
+        component="form"
+        onSubmit={handleForgotPassword}
+      >
+        <Typography variant="h6">Email Address</Typography>
+        <TextField
           id="reset-email"
           variant="outlined"
           fullWidth
           value={email}
-          onChange={(e: React.FormEvent<HTMLInputElement>) => setEmail((e.target as HTMLInputElement).value)}
+          onChange={(e) => setEmail(e.target.value)}
           required
         />
         {error && (
@@ -46,11 +48,13 @@ export default function AuthForgotPassword() {
         )}
         {success && (
           <Alert severity="success" sx={{ my: 2 }}>
-            <Typography variant='body1' color="black">{success}</Typography>
+            <Typography variant="body1" color="black">
+              {success}
+            </Typography>
           </Alert>
         )}
         <Button
-          color="primary"
+          color="secondary"
           variant="contained"
           size="large"
           fullWidth
@@ -59,10 +63,10 @@ export default function AuthForgotPassword() {
           Forgot Password
         </Button>
         <Button
-          color="primary"
+          color="secondary"
           size="large"
           fullWidth
-          component={Link}
+          variant="text"
           href="/auth/login"
         >
           Back to Login

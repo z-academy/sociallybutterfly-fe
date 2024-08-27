@@ -159,7 +159,7 @@ const AuthLogin = ({ title, subtitle, subtext }) => {
             fontWeight="500"
             sx={{
               textDecoration: "none",
-              color: "primary.main",
+              color: "secondary.main",
             }}
           >
             Forgot Password?

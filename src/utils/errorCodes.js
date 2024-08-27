@@ -17,7 +17,7 @@ export const AUTH_MESSAGE = {
 export const ERROR_MESSAGES = {
   // EMAIL
   EMAIL_REQUIRED: 'Email is required.',
-  INVALID_EMAIL_DOMAIN: 'Email domain must edu.',
+  INVALID_EMAIL_DOMAIN: "Please ensure that the email address ends with '.edu'.",
   INVALID_EMAIL_FORMAT: 'Invalid email format.',
   EMAIL_LIMIT_REACHED: 'You have reached a limit for sending mail. Please try again 3 minutes later.',
 

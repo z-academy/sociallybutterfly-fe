@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Button, Stack, Alert, IconButton, InputAdornment, TextField, Typography } from "@mui/material";
 import { useNavigate } from 'react-router-dom';
-import { supabase } from '@/utils/supabase';
+import { supabase } from 'utils/supabase';
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import { AUTH_MESSAGE, ERROR_MESSAGES } from "@/utils/errorCodes";
+import { AUTH_MESSAGE, ERROR_MESSAGES } from "utils/errorCodes";
 
 export default function AuthResetPassword() {
   const navigate = useNavigate();
@@ -57,74 +57,72 @@ export default function AuthResetPassword() {
   const handleClickShowConfirmPassword = () => setShowConfirmPassword(!showConfirmPassword);
 
   return (
-    <>
-      <Stack mt={4} spacing={2} component="form" onSubmit={handleResetPassword}>
-        <Typography variant="h6" component="label" htmlFor="new-password">New Password</Typography>
-        <TextField
-          id="new-password"
-          variant="outlined"
-          fullWidth
-          type={showNewPassword ? 'text' : 'password'}
-          value={newPassword}
-          onChange={(e) => setNewPassword(e.target.value)}
-          required
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle new password visibility"
-                  onClick={handleClickShowNewPassword}
-                  edge="end"
-                >
-                  {showNewPassword ? <Visibility /> : <VisibilityOff />}
-                </IconButton>
-              </InputAdornment>
-            ),
-          }}
-        />
-        <Typography variant="h6" component="label" htmlFor="confirm-password">Confirm Password</Typography>
-        <TextField
-          id="confirm-password"
-          variant="outlined"
-          fullWidth
-          type={showConfirmPassword ? 'text' : 'password'}
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          required
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle confirm password visibility"
-                  onClick={handleClickShowConfirmPassword}
-                  edge="end"
-                >
-                  {showConfirmPassword ? <Visibility /> : <VisibilityOff />}
-                </IconButton>
-              </InputAdornment>
-            ),
-          }}
-        />
-        {error && (
-          <Alert severity="error" sx={{ mt: 2 }}>
-            {error}
-          </Alert>
-        )}
-        {success && (
-          <Alert severity="success" sx={{ my: 2 }}>
-            <Typography variant='body1' color="black">{success}</Typography>
-          </Alert>
-        )}
-        <Button
-          color="primary"
-          variant="contained"
-          size="large"
-          fullWidth
-          type="submit"
-        >
-          Reset Password
-        </Button>
-      </Stack>
-    </>
+    <Stack mt={4} spacing={2} component="form" onSubmit={handleResetPassword}>
+      <Typography variant="h6" component="label" htmlFor="new-password">New Password</Typography>
+      <TextField
+        id="new-password"
+        variant="outlined"
+        fullWidth
+        type={showNewPassword ? 'text' : 'password'}
+        value={newPassword}
+        onChange={(e) => setNewPassword(e.target.value)}
+        required
+        InputProps={{
+          endAdornment: (
+            <InputAdornment position="end">
+              <IconButton
+                aria-label="toggle new password visibility"
+                onClick={handleClickShowNewPassword}
+                edge="end"
+              >
+                {showNewPassword ? <Visibility /> : <VisibilityOff />}
+              </IconButton>
+            </InputAdornment>
+          ),
+        }}
+      />
+      <Typography variant="h6" component="label" htmlFor="confirm-password">Confirm Password</Typography>
+      <TextField
+        id="confirm-password"
+        variant="outlined"
+        fullWidth
+        type={showConfirmPassword ? 'text' : 'password'}
+        value={confirmPassword}
+        onChange={(e) => setConfirmPassword(e.target.value)}
+        required
+        InputProps={{
+          endAdornment: (
+            <InputAdornment position="end">
+              <IconButton
+                aria-label="toggle confirm password visibility"
+                onClick={handleClickShowConfirmPassword}
+                edge="end"
+              >
+                {showConfirmPassword ? <Visibility /> : <VisibilityOff />}
+              </IconButton>
+            </InputAdornment>
+          ),
+        }}
+      />
+      {error && (
+        <Alert severity="error" sx={{ mt: 2 }}>
+          {error}
+        </Alert>
+      )}
+      {success && (
+        <Alert severity="success" sx={{ my: 2 }}>
+          <Typography variant='body1' color="black">{success}</Typography>
+        </Alert>
+      )}
+      <Button
+        color="secondary"
+        variant="contained"
+        size="large"
+        fullWidth
+        type="submit"
+      >
+        Reset Password
+      </Button>
+    </Stack>
   );
 }
