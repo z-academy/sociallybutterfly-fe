@@ -98,14 +98,14 @@ const AuthRegister = ({ title, subtitle, subtext }) => {
   return (
     <>
       {title && (
-        <Typography fontWeight="700" variant="h3" mb={1}>
+        <Typography fontWeight="500" variant="h4" mb={1}>
           {title}
         </Typography>
       )}
 
       {subtext}
 
-      <Box component="form" onSubmit={handleSignUp} height={450} width={400}>
+      <Box component="form" onSubmit={handleSignUp} height={450} width={300}>
         <Stack mb={3}>
           <Typography variant="body1" component="label" htmlFor="name" mb={1}>Name</Typography>
           <TextField
@@ -165,7 +165,7 @@ const AuthRegister = ({ title, subtitle, subtext }) => {
           </Typography>
         )}
         <Button
-          color="primary"
+          color="secondary"
           variant="contained"
           size="large"
           fullWidth
