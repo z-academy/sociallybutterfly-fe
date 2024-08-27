@@ -6,7 +6,8 @@
       "components/layout/*": ["app/components/layout/*"],
       "assets/*": ["assets/*"],
       "utils/*": ["utils/*"],
-      "pages/*": ["app/*"]
+      "pages/*": ["app/*"],
+      "context/*": ["app/context/*"]
     }
   },
   "include": ["src"]

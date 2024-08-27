@@ -16,7 +16,7 @@ const BannerContent = () => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate('/app');
+    navigate('/auth/login');
   };
 
   return (
@@ -110,7 +110,7 @@ const BannerContent = () => {
             onClick={handleClick}
             size="medium"
           >
-            Try now for free
+            Sign in
           </StyledButton>
         </Stack>
       </motion.div>
