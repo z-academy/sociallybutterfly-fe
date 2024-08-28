@@ -46,7 +46,7 @@ const Footer = () => {
             >
               <Typography component="span" display="inline">
                 {" "}
-                Z.Academy
+                Z Academy
               </Typography>
             </Link>
             .

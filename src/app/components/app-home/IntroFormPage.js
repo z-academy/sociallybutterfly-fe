@@ -63,11 +63,13 @@ const IntroFormPage = () => {
                 variant="outlined"
                 fullWidth
                 placeholder="Your name"
+                label="Your name"
                 InputProps={{
                   style: {
                     backgroundColor: "#f5f5f5",
                     borderRadius: 12,
                     padding: "10px 12px",
+                    fontSize: 16,
                   },
                 }}
                 sx={{ mt: 2, mb: 6 }}

@@ -6,8 +6,8 @@ import { useNavigate } from "react-router-dom";
 const AppPage = () => {
   const navigate = useNavigate();
   return (
-    <Container maxWidth="sm" sx={{ paddingX: 0}}>
-      <Box sx={{ height: "100vh", backgroundColor: "#f5f5f5", p: 3 }}>
+    <Container maxWidth="sm" sx={{ paddingX: 0 }}>
+      <Box sx={{ height: "100vh", p: 3 }}>
         <Box
           display="flex"
           justifyContent="space-between"
@@ -45,13 +45,14 @@ const AppPage = () => {
                 p: { xs: 2, sm: 4 },
                 borderRadius: 2,
                 textAlign: "left",
+                backgroundColor: "#f5f5f5",
               }}
               onClick={() => navigate("/introduction")}
             >
               <Typography variant="h3" fontWeight={700} gutterBottom>
                 Connect
               </Typography>
-              <Typography variant="body1" color="textSecondary">
+              <Typography variant="h5" color="textSecondary" fontWeight={400}>
                 I have a partner in front of me
               </Typography>
             </Paper>
@@ -68,7 +69,8 @@ const AppPage = () => {
                 p: { xs: 2, sm: 4 },
                 borderRadius: 2,
                 textAlign: "left",
-                opacity: 0.6,
+                opacity: 0.5,
+                backgroundColor: "#f5f5f5",
               }}
             >
               <Typography
@@ -78,12 +80,12 @@ const AppPage = () => {
                 gutterBottom
               >
                 Match
-                <Typography variant="body1" color="textSecondary">
-                  COMING SOON
+                <Typography variant="h5" color="textSecondary">
+                  COMING SOON ...
                 </Typography>
               </Typography>
 
-              <Typography variant="body1" color="textSecondary">
+              <Typography variant="h5" color="textSecondary"  fontWeight={400}>
                 Find me someone to talk to
               </Typography>
             </Paper>

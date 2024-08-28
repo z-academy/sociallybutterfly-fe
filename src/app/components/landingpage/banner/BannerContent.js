@@ -55,7 +55,7 @@ const BannerContent = () => {
               marginBottom: "8px", 
             }}
           >
-            Z.Academy
+            Z Academy
           </Typography>
           Revolutionizing Networking and Collaboration
         </Typography>
