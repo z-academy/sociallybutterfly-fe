@@ -38,8 +38,8 @@ const Navigations = () => {
 
 	return (
 		<>
-			<Button color="secondary" variant="outlined" size='medium' onClick={handleClick}>
-				Sign In
+			<Button color="secondary" variant="outlined" size='medium' href="mailto:chenyu@z.academy">
+				Contact Us
 			</Button>
 		</>
 	);
