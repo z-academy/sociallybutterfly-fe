@@ -41,7 +41,7 @@ const Footer = () => {
             <br />A product of{" "}
             <Link
               target="_blank"
-              href="https://loong.academy/"
+              href="https://z.academy/"
               color={theme.palette.primary.main} // Use theme color
             >
               <Typography component="span" display="inline">
@@ -57,13 +57,13 @@ const Footer = () => {
             mb: { xs: 4, sm: 0 },
           }}
         >
-          <IconButton id="basic-button" href="mailto:contact@chenyuzhang.com">
+          <IconButton id="basic-button" href="mailto:chenyu@z.academy">
             <Icon icon="mdi:email-outline" width={32} color={theme.palette.secondary.main} />
           </IconButton>
           <IconButton
             id="basic-button"
             target="_blank"
-            href="https://www.linkedin.com/company/loong-academy/"
+            href="https://www.linkedin.com/company/the-z-academy/"
           >
             <Icon icon="mdi:linkedin" width={32} color={theme.palette.secondary.main} />
           </IconButton>

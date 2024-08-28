@@ -107,10 +107,10 @@ const BannerContent = () => {
           <StyledButton
             variant="contained"
             color="secondary"
-            onClick={handleClick}
+            href="mailto:chenyu@z.academy"
             size="medium"
           >
-            Sign in
+            Contact Us
           </StyledButton>
         </Stack>
       </motion.div>

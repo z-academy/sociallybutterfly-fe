@@ -33,10 +33,7 @@ const MobileSidebar = () => {
 			<Box p={3}>
 
 				<Stack direction="column" spacing={2} mb={2} >
-					<Button color="secondary" variant="contained" onClick={handleLoginClick}>Sign in</Button>
-				</Stack>
-				<Stack direction="column" spacing={2} >
-					<Button color="secondary" variant="contained" onClick={handleLogoutClick}>Logout</Button>
+					<Button color="secondary" variant="contained" href="mailto:chenyu@z.academy">Contact Us</Button>
 				</Stack>
 			</Box>
 		</>
