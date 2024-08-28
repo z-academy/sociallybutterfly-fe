@@ -10,7 +10,7 @@ const cardData = [
     title: "Target Users",
     headline: "Students, Educators, and Professionals",
     content:
-      "Tailored for those facing challenges in traditional networking, especially from underrepresented groups, Z.Academy fosters valuable connections for personal and professional growth.",
+      "Tailored for those facing challenges in traditional networking, especially from underrepresented groups, Z Academy fosters valuable connections for personal and professional growth.",
   },
   {
     title: "The Challenge",
@@ -22,7 +22,7 @@ const cardData = [
     title: "Our Solution",
     headline: "AI-Powered Networking for All",
     content:
-      "Z.Academy offers an AI-driven platform creating equitable networking opportunities, with tiered plans for institutions and corporations offering advanced insights and customized experiences.",
+      "Z Academy offers an AI-driven platform creating equitable networking opportunities, with tiered plans for institutions and corporations offering advanced insights and customized experiences.",
   },
 ];
 
