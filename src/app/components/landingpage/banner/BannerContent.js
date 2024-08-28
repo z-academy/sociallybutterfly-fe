@@ -16,7 +16,7 @@ const BannerContent = () => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate('/app');
+    navigate("/app");
   };
 
   return (
@@ -52,7 +52,7 @@ const BannerContent = () => {
             sx={{
               display: "block",
               fontWeight: 800,
-              marginBottom: "8px", 
+              marginBottom: "8px",
             }}
           >
             Z Academy
@@ -80,10 +80,10 @@ const BannerContent = () => {
               mx: { lg: 25, md: 10, xs: 2 },
             }}
           >
-            We offers an AI-powered networking platform designed to
-            foster inclusive, personalized, and efficient interactions. Perfect
-            for educational institutions like universities and training centers,
-            as well as corporate HR and L&D departments.
+            We offers an AI-powered networking platform designed to foster
+            inclusive, personalized, and efficient interactions. Perfect for
+            educational institutions like universities and training centers, as
+            well as corporate HR and L&D departments.
           </Typography>
         </motion.div>
       </Box>
@@ -108,6 +108,7 @@ const BannerContent = () => {
             variant="contained"
             color="secondary"
             href="mailto:chenyu@z.academy"
+            target="_blank"
             size="medium"
           >
             Contact Us

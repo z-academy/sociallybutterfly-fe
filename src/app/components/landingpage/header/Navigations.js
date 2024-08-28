@@ -38,7 +38,7 @@ const Navigations = () => {
 
 	return (
 		<>
-			<Button color="secondary" variant="outlined" size='medium' href="mailto:chenyu@z.academy">
+			<Button color="secondary" variant="outlined" size='medium' href="mailto:chenyu@z.academy" target='_blank'>
 				Contact Us
 			</Button>
 		</>

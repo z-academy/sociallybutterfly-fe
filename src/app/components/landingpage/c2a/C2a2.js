@@ -14,7 +14,7 @@ const StyledButton2 = styled(Button)(({ theme }) => ({
   color: "#fff",
   "&:hover": {
     backgroundColor: "#fff",
-    color: theme.palette.primary.main, 
+    color: theme.palette.primary.main,
   },
 }));
 
@@ -23,7 +23,7 @@ const C2a2 = () => {
     <Box>
       <Box
         sx={{
-          backgroundColor: "secondary.main", 
+          backgroundColor: "secondary.main",
           pt: "30px",
           pb: "30px",
         }}
@@ -48,6 +48,7 @@ const C2a2 = () => {
                   variant="outlined"
                   color="inherit"
                   href="mailto:chenyu@z.academy"
+                  target="_blank"
                 >
                   Contact Us
                 </StyledButton2>

@@ -57,7 +57,7 @@ const Footer = () => {
             mb: { xs: 4, sm: 0 },
           }}
         >
-          <IconButton id="basic-button" href="mailto:chenyu@z.academy">
+          <IconButton id="basic-button" href="mailto:chenyu@z.academy" target='_blank'>
             <Icon icon="mdi:email-outline" width={32} color={theme.palette.secondary.main} />
           </IconButton>
           <IconButton
