@@ -47,9 +47,9 @@ const C2a2 = () => {
                 <StyledButton2
                   variant="outlined"
                   color="inherit"
-                  href='/auth/register'
+                  href="mailto:chenyu@z.academy"
                 >
-                  Sign Up
+                  Contact Us
                 </StyledButton2>
               </Stack>
             </Grid>
